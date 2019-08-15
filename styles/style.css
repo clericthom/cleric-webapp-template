@@ -1,5 +1,9 @@
 body {
   font-family: 'Roboto', Lucida Grande, Lucida Sans, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
 }
 
 a {
@@ -9,8 +13,8 @@ a {
 ul>li {
   color: #7E7E7E;
   list-style: none;
-  margin-top: 0.5vh;
-  margin-bottom: 0.5vh;
+  /* margin-top: 0.5vh;
+  margin-bottom: 0.5vh; */
 }
 
 a:hover {
@@ -69,8 +73,8 @@ a:hover {
 }
 
 .list>li {
-  margin-top: 1vh;
-  margin-bottom: 1vh;
+  /* margin-top: 1vh;
+  margin-bottom: 1vh; */
 }
 
 .nTd {
@@ -321,6 +325,18 @@ button.navbar-toggler {
 
 #delayValue {
   display: none;
+}
+
+.dropdown-toggle:active {
+  color: #CCCCCC;
+}
+
+.btn-group-toggle {
+  border-radius: 4px;
+}
+
+.btn.btn-secondary.active {
+  background-color: #ae184b;
 }
 
 @media only screen and (max-width: 1200px) {
