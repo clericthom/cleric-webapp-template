@@ -294,7 +294,7 @@
             //Counters
             var count = $(".counter li");
             if (count.length > 1) {
-                count.parent().append($('<span class="badge badge-primary badge-pill">' + count.length +
+                count.parent().siblings().append($('<span class="badge badge-primary badge-pill">' + count.length +
                     '</span>'));
             }
 

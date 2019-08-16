@@ -17,6 +17,10 @@ ul>li {
   margin-bottom: 0.5vh; */
 }
 
+.badge {
+    margin-left: 5px !important;
+}
+
 a:hover {
   color: #ae184b;
   text-decoration: none;
