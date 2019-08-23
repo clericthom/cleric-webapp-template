@@ -19,6 +19,14 @@ span.title {
   display: inline-block !important;
 }
 
+#export:hover {
+  cursor: pointer;
+}
+
+#vNum.active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 ul>li {
   color: #7E7E7E;
   list-style: none;

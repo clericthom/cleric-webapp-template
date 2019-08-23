@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
     <title>NONE SET</title>
 </head>
 
@@ -55,7 +54,7 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href="/">Item 1</a></li>
+                    <li><a id="export"><i class="fas fa-file-code"></i></a></li>
                     <li><a href="/">Item 2</a></li>
                 </ul>
             </div>
@@ -410,6 +409,19 @@
             });
             localStorage.setItem("color", color);
         }
+
+        $("#export").click(function () {
+            event.preventDefault();
+            sSheet = document.styleSheets[2];
+            myRules = sSheet.ccsRules;
+            len = myRules.length;
+            for (i = 0; i < 50; i++) {
+                cssOutputString = cssOutputString + myRules[i].cssText + "\n";
+            }
+            console.log(cssOutputString);
+            var blob = new Blob([cssOutputString]);
+            saveAs(blob, "style.css");
+        });
     </script>
 </body>
 
