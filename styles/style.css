@@ -86,9 +86,9 @@ a:hover {
   list-style: none;
 }
 
-.list>li {
-  /* margin-top: 1vh;
-  margin-bottom: 1vh; */
+.list-group-item.dark {
+  background-color: rgb(31, 31, 31);
+  border: none;
 }
 
 .nTd {
@@ -175,10 +175,14 @@ a:hover {
   background: #7f8c8d;
 }
 
-.colorBox:hover {
-  cursor: pointer;
+#dark {
+  background: #1F1F1F;
 }
 
+.colorBox:hover,
+.colorBoxDm {
+  cursor: pointer;
+}
 
 footer {
   bottom: 0px;

@@ -51,6 +51,7 @@
                                 <div class="colorBox" id="7"><img class="cLogo" src="/imgs/logo_white.png"></div>
                                 <div class="colorBox" id="8"><img class="cLogo" src="/imgs/logo_white.png"></div>
                                 <div class="colorBox" id="9"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBoxDm" id="dark"><img class="cLogo" src="/imgs/logo_white.png"></div>
                             </div>
                         </div>
                     </li>
@@ -298,10 +299,11 @@
         var companyName = '';
         var color = '';
         var activeFlag = '';
+        var darkMode = '';
 
         $(document).ready(function () {
 
-            // Preferences
+            // Get/ser all preferences from local storage
             if (localStorage.getItem("color") === null) {
                 console.log('No color exists, setting to default');
                 localStorage.setItem("color", "#e91e63");
@@ -330,6 +332,12 @@
             }
             activeFlag = localStorage.getItem("activeFlag");
 
+            if (localStorage.getItem("darkMode") === null) {
+                console.log('No darkMode exists, setting to default');
+                localStorage.setItem("darkMode", "false");
+                darkMode = localStorage.getItem("darkMode");
+            }
+            darkMode = localStorage.getItem("darkMode");
 
             //Apply styling, update DOM elements
             document.title = name;
@@ -338,6 +346,17 @@
             colorSet(color);
             $('.cLogo').hide();
             $('#' + activeFlag).children('.cLogo').css("display", "block");
+
+            if (darkMode == 'true') {
+                $('body').css("color", "#E1E1E1");
+                $('body').css("background-color", "#121212");
+                $('footer').css("background", "rgb(31, 31, 31)");
+                $('.navbar').css("box-shadow", 'none');
+                $('.list-group-item').addClass('dark');
+                $('.mainColor').css("color", "rgb(225, 225, 225)");
+                $('btn-cleric').css("background-color", '#e84393');
+                $('.badge').css("background-color", "#e84393");
+            }
 
 
             //Counters
@@ -362,7 +381,46 @@
             $('#inputDate').val(moment().add(1, 'm').format('MM-DD-YYYY HH:mma'));
         });
 
+        $(".colorBox").click(function () {
+            var userColor = $(this).css('backgroundColor');
+            var boxId = $(this).attr("id");
+            localStorage.setItem('activeFlag', boxId);
+            localStorage.setItem('darkMode', 'false');
+            colorSet(userColor)
+            $('.cLogo').hide();
+            $(this).children('.cLogo').css("display", "block");
+            $('body').css("color", "#333");
+            $('body').css("background-color", "#fff");
+            $('footer').css("background", '#7E7E7E');
+            $('.navbar').css("box-shadow", '0 0 1em #CCCCCC');
+            $('.list-group-item').removeClass('dark');
+        });
+
+        $(".colorBoxDm").click(function () {
+            localStorage.setItem('darkMode', 'true');
+            var userColor = $(this).css('backgroundColor');
+            var boxId = $(this).attr("id");
+            localStorage.setItem('activeFlag', boxId);
+            colorSet(userColor)
+            $('.cLogo').hide();
+            $(this).children('.cLogo').css("display", "block");
+            $('body').css("color", "#E1E1E1");
+            $('body').css("background-color", "#121212");
+            $('footer').css("background", userColor);
+            $('.navbar').css("box-shadow", 'none');
+            $('.list-group-item').addClass('dark');
+            $('.mainColor').css("color", "rgb(225, 225, 225)");
+            $('btn-cleric').css("background-color", '#e84393');
+        });
+
+
         function colorSet(color) {
+            darkMode = localStorage.getItem('darkMode');
+            if (darkMode == 'true') {
+                console.log('dark mode active');
+            } else {
+                console.log('dark mode inactive');
+            }
             $('.navbar.navbar-dark').css({
                 backgroundColor: color
             });
@@ -371,18 +429,9 @@
             })
             $('.mainColor').css({
                 color: color
-            })
+            });
             localStorage.setItem("color", color);
         }
-
-        $(".colorBox").click(function () {
-            var userColor = $(this).css('backgroundColor');
-            var boxId = $(this).attr("id");
-            localStorage.setItem('activeFlag', boxId);
-            colorSet(userColor)
-            $('.cLogo').hide();
-            $(this).children('.cLogo').css("display", "block");
-        });
     </script>
 </body>
 
