@@ -40,15 +40,16 @@
                             aria-haspopup="true" aria-expanded="false"><i class="fas fa-palette"></i></a>
                         <div class="dropdown-menu">
                             <div class="grid">
-                                <div class="colorBox" id="1"></div>
-                                <div class="colorBox" id="2"></div>
-                                <div class="colorBox" id="3"></div>
-                                <div class="colorBox" id="4"></div>
-                                <div class="colorBox" id="5"></div>
-                                <div class="colorBox" id="6"></div>
-                                <div class="colorBox" id="7"></div>
-                                <div class="colorBox" id="8"></div>
-                                <div class="colorBox" id="9"></div>
+                                <div class="colorBox" id="0"><img class="cLogo active" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="1"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="2"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="3"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="4"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="5"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="6"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="7"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="8"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="9"><img class="cLogo" src="/imgs/logo_white.png"></div>
                             </div>
                         </div>
                     </li>
@@ -301,15 +302,7 @@
             document.title = name;
             $('.title').text(name);
             $('#footer').text(companyName + ' ' + moment().year());
-            $('.navbar.navbar-dark').css({
-                backgroundColor: color
-            });
-            $('.btn-cleric').css({
-                backgroundColor: color
-            })
-            $('.mainColor').css({
-                color: color
-            })
+            colorSet(color);
 
             //Counters
             var count = $(".counter li");
@@ -331,6 +324,25 @@
 
         $(".cTimeBtn").click(function () {
             $('#inputDate').val(moment().add(1, 'm').format('MM-DD-YYYY HH:mma'));
+        });
+
+        function colorSet(color) {
+            $('.navbar.navbar-dark').css({
+                backgroundColor: color
+            });
+            $('.btn-cleric').css({
+                backgroundColor: color
+            })
+            $('.mainColor').css({
+                color: color
+            })
+        }
+
+        $(".colorBox").click(function () {
+            var userColor = $(this).css('backgroundColor');
+            colorSet(userColor)
+            $('.cLogo').hide();
+            $(this).children('.cLogo').css("display", "block");
         });
     </script>
 </body>
