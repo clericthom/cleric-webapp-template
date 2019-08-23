@@ -294,9 +294,10 @@
     <!-- Footer end -->
     <script>
         //Global Site settings
-        var name = 'Cleric Webapp template';
-        var companyName = 'Cleric';
-        var color = 'brown';
+        var name = '';
+        var companyName = '';
+        var color = '';
+        var activeFlag = '';
 
         $(document).ready(function () {
 
@@ -308,12 +309,36 @@
             }
             color = localStorage.getItem("color");
 
+            if (localStorage.getItem("companyName") === null) {
+                console.log('No companyName exists, setting to default');
+                localStorage.setItem("companyName", "Cleric ");
+                companyName = localStorage.getItem("companyName");
+            }
+            companyName = localStorage.getItem("color");
+
+            if (localStorage.getItem("name") === null) {
+                console.log('No name exists, setting to default');
+                localStorage.setItem("name", "Cleric Webapp template");
+                name = localStorage.getItem("name");
+            }
+            name = localStorage.getItem("name");
+
+            if (localStorage.getItem("activeFlag") === null) {
+                console.log('No activeFlag exists, setting to default');
+                localStorage.setItem("activeFlag", "0");
+                activeFlag = localStorage.getItem("activeFlag");
+            }
+            activeFlag = localStorage.getItem("activeFlag");
+
 
             //Apply styling, update DOM elements
             document.title = name;
             $('.title').text(name);
             $('#footer').text(companyName + ' ' + moment().year());
             colorSet(color);
+            $('.cLogo').hide();
+            $('#' + activeFlag).children('.cLogo').css("display", "block");
+
 
             //Counters
             var count = $(".counter li");
@@ -352,6 +377,8 @@
 
         $(".colorBox").click(function () {
             var userColor = $(this).css('backgroundColor');
+            var boxId = $(this).attr("id");
+            localStorage.setItem('activeFlag', boxId);
             colorSet(userColor)
             $('.cLogo').hide();
             $(this).children('.cLogo').css("display", "block");
