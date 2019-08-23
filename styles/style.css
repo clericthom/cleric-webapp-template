@@ -18,7 +18,8 @@ ul>li {
 }
 
 .badge {
-    margin-left: 5px !important;
+  margin-left: 5px !important;
+  float: right;
 }
 
 a:hover {
@@ -95,6 +96,7 @@ footer {
   color: #ffffff;
   padding: 20px;
   letter-spacing: 0.6px;
+  z-index: 999;
 }
 
 .navbar.navbar-dark {
