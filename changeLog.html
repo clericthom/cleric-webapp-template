@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="imgs/favicon.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/5ac3be84e8.js"></script>
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <title>NONE SET</title>
+</head>
+
+<body cz-shortcut-listen="true">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header"><a class="navbar-brand" href="/"><img class="logo" src="/imgs/logo_white.png"
+                        alt="cleric_logo"><span class="title"></span></a><button class="navbar-toggler" type="button"
+                    data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="fas fa-bars"
+                            aria-hidden="true"></i></span></button></div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav navbar-nav">
+                    <li><a id="vNum" href="/changeLog.html"></a></li>
+                    <li><a href="https://github.com/clericthom/cleric-webapp-template" target="blank"><i
+                                class="fab fa-github"></i></a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false"><i class="fas fa-palette"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="grid">
+                                <div class="colorBox" id="0"><img class="cLogo active" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="1"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="2"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="3"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="4"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="5"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="6"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="7"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="8"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBox" id="9"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                                <div class="colorBoxDm" id="dark"><img class="cLogo" src="/imgs/logo_white.png"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="/">Item 1</a></li>
+                    <li><a href="/">Item 2</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content -->
+    <div class="container-fluid main">
+        <div class="col-sm-12">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-8">
+                <h1 id="text">Change log</h1>
+                <p><i>Newest - oldest</i></p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item month">Aug 2019 <span class="badge badge-primary badge-pill">12</span>
+                    </li>
+                    <li class="list-group-item">Dark mode (WIP) added</li>
+                    <li class="list-group-item">Github button fix</li>
+                    <li class="list-group-item">Footer bug fix</li>
+                    <li class="list-group-item">Saving user preferences to local storage</li>
+                    <li class="list-group-item">Favicon updates</li>
+                    <li class="list-group-item">Custom color picker added, with active/hover states + icon</li>
+                    <li class="list-group-item">Color picker static added, nav updates</li>
+                    <li class="list-group-item">Img updates: Trans bg & white trans version added</li>
+                    <li class="list-group-item">Style updates, badge and footer z-index bug fix</li>
+                    <li class="list-group-item">Badge fix</li>
+                    <li class="list-group-item">Update index.html</li>
+                    <li class="list-group-item">Custom preferences options added</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Main content -->
+    <!-- Navbar end -->
+    <!-- Footer -->
+    <div class="container-fluid">
+        <footer><sup id="footer"></sup>
+        </footer>
+    </div>
+    <!-- Footer end -->
+    <script>
+        //Global Site settings
+        var name = '';
+        var companyName = '';
+        var color = '';
+        var activeFlag = '';
+        var darkMode = '';
+        var versionNum = 'v0.7';
+
+        $(document).ready(function () {
+
+            // Get/ser all preferences from local storage
+            if (localStorage.getItem("color") === null) {
+                console.log('No color exists, setting to default');
+                localStorage.setItem("color", "#e91e63");
+                color = localStorage.getItem("color");
+            }
+            color = localStorage.getItem("color");
+
+            if (localStorage.getItem("companyName") === null) {
+                console.log('No companyName exists, setting to default');
+                localStorage.setItem("companyName", "Cleric ");
+                companyName = localStorage.getItem("companyName");
+            }
+            companyName = localStorage.getItem("companyName");
+
+            if (localStorage.getItem("name") === null) {
+                console.log('No name exists, setting to default');
+                localStorage.setItem("name", "Cleric Webapp template");
+                name = localStorage.getItem("name");
+            }
+            name = localStorage.getItem("name");
+
+            if (localStorage.getItem("activeFlag") === null) {
+                console.log('No activeFlag exists, setting to default');
+                localStorage.setItem("activeFlag", "0");
+                activeFlag = localStorage.getItem("activeFlag");
+            }
+            activeFlag = localStorage.getItem("activeFlag");
+
+            if (localStorage.getItem("darkMode") === null) {
+                console.log('No darkMode exists, setting to default');
+                localStorage.setItem("darkMode", "false");
+                darkMode = localStorage.getItem("darkMode");
+            }
+            darkMode = localStorage.getItem("darkMode");
+
+            //Apply styling, update DOM elements
+            document.title = name;
+            $('.title').text(name);
+            $('#vNum').text(versionNum);
+            $('#footer').text(companyName + ' ' + moment().year());
+            colorSet(color);
+            $('.cLogo').hide();
+            $('#' + activeFlag).children('.cLogo').css("display", "block");
+
+            if (darkMode == 'true') {
+                $('body').css("color", "#E1E1E1");
+                $('body').css("background-color", "#121212");
+                $('footer').css("background", "rgb(31, 31, 31)");
+                $('.navbar').css("box-shadow", 'none');
+                $('.list-group-item').addClass('dark');
+                $('.mainColor').css("color", "rgb(225, 225, 225)");
+                $('btn-cleric').css("background-color", '#e84393');
+                $('.badge').css("background-color", "#e84393");
+            }
+
+
+            //Counters
+            var count = $(".counter li");
+            if (count.length > 1) {
+                count.parent().siblings().append($('<span class="badge badge-primary badge-pill">' + count
+                    .length +
+                    '</span>'));
+            }
+
+            $('#inputDate').datetimepicker({
+                sideBySide: true,
+                format: 'MM-DD-YYYY HH:mma',
+            });
+            $('#selectTimeZone').chosen();
+        });
+        setTimeout(function () {
+            $('.toast').toast('show');
+        }, 500);
+
+        $(".cTimeBtn").click(function () {
+            $('#inputDate').val(moment().add(1, 'm').format('MM-DD-YYYY HH:mma'));
+        });
+
+        $(".colorBox").click(function () {
+            var userColor = $(this).css('backgroundColor');
+            var boxId = $(this).attr("id");
+            localStorage.setItem('activeFlag', boxId);
+            localStorage.setItem('darkMode', 'false');
+            colorSet(userColor)
+            $('.cLogo').hide();
+            $(this).children('.cLogo').css("display", "block");
+            $('body').css("color", "#333");
+            $('body').css("background-color", "#fff");
+            $('footer').css("background", '#7E7E7E');
+            $('.navbar').css("box-shadow", '0 0 1em #CCCCCC');
+            $('.list-group-item').removeClass('dark');
+        });
+
+        $(".colorBoxDm").click(function () {
+            localStorage.setItem('darkMode', 'true');
+            var userColor = $(this).css('backgroundColor');
+            var boxId = $(this).attr("id");
+            localStorage.setItem('activeFlag', boxId);
+            colorSet(userColor)
+            $('.cLogo').hide();
+            $(this).children('.cLogo').css("display", "block");
+            $('body').css("color", "#E1E1E1");
+            $('body').css("background-color", "#121212");
+            $('footer').css("background", userColor);
+            $('.navbar').css("box-shadow", 'none');
+            $('.list-group-item').addClass('dark');
+            $('.mainColor').css("color", "rgb(225, 225, 225)");
+            $('btn-cleric').css("background-color", '#e84393');
+        });
+
+
+        function colorSet(color) {
+            darkMode = localStorage.getItem('darkMode');
+            if (darkMode == 'true') {
+                console.log('dark mode active');
+            } else {
+                console.log('dark mode inactive');
+            }
+            $('.month').css({
+                backgroundColor: color,
+                color: '#fff'
+            });
+            $('.navbar.navbar-dark').css({
+                backgroundColor: color
+            });
+            $('.btn-cleric').css({
+                backgroundColor: color
+            })
+            $('.mainColor').css({
+                color: color
+            });
+            localStorage.setItem("color", color);
+        }
+    </script>
+</body>
+
+</html>
